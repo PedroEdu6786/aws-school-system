@@ -1,0 +1,16 @@
+{
+  "name": "aws-school-system",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/PedroEdu6786/aws-school-system.git",
+  "author": "eduardo.cruz <eduardo.cruz@konfio.mx>",
+  "license": "MIT",
+  "scripts": {
+    "serve": "node src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.17.3",
+    "joi": "^17.6.0"
+  }
+}
