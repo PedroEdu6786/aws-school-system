@@ -29,9 +29,9 @@ const createTeacher = async (req, res) => {
     return res.status(400).json({ message: 'Invalid teacher data', error });
   }
 
-  await Teacher.create(value);
+  const newTeacher = await Teacher.create(value);
 
-  return res.status(201).json(value);
+  return res.status(201).json(newTeacher);
 };
 
 const updateTeacher = async (req, res) => {
@@ -58,7 +58,7 @@ const deleteTeacher = async (req, res) => {
     return res.status(404).json({ message: `There is no teacher with id ${id}` });
   }
 
-  return res.status(200);
+  return res.status(200).json(teacher);
 };
 
 module.exports = {
