@@ -1,5 +1,6 @@
 const { StudentValidator } = require('../utils/joi');
 const Student = require('../models/Student');
+const s3 = require('../utils/s3');
 
 const getStudents = async (req, res) => {
   const students = await Student.findAll();
@@ -60,10 +61,22 @@ const deleteStudent = async (req, res) => {
   return res.status(200).json(student);
 };
 
+const uploadProfilePicture = async (req, res) => {
+  if (!req.file || !req.file.mimetype.includes('image')) {
+    return res.status(404).json({ message: `Upload image not successful` });
+  }
+  const data = await s3.upload(`photos/${req.params.id}/${req.file.originalname}`, req.file.buffer);
+  await Student.update({ fotoPerfilUrl: data.location }, { where: { id: req.params.id } });
+  const student = await Student.findByPk(req.params.id);
+
+  return res.status(200).json(student);
+};
+
 module.exports = {
   getStudents,
   getStudentById,
   createStudent,
   deleteStudent,
-  updateStudent
+  updateStudent,
+  uploadProfilePicture
 };

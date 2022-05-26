@@ -22,6 +22,10 @@ const Student = sequelize.define('Student', {
   promedio: {
     type: DataTypes.DOUBLE,
     allowNull: false
+  },
+  fotoPerfilUrl: {
+    type: DataTypes.STRING,
+    allowNull: true
   }
 });
 

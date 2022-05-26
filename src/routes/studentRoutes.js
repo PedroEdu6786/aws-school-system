@@ -5,7 +5,8 @@ const {
   createStudent,
   getStudentById,
   updateStudent,
-  deleteStudent
+  deleteStudent,
+  uploadProfilePicture
 } = require('../controllers/studentController');
 
 const router = express.Router();
@@ -19,5 +20,6 @@ router
   .get(getStudentById)
   .put(updateStudent)
   .delete(deleteStudent);
+router.route('/:id/fotoPerfil').post(uploadProfilePicture);
 
 module.exports = router;
