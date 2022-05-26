@@ -1,11 +1,28 @@
-const Joi = require("joi");
+const { DataTypes } = require('sequelize');
+const { sequelize } = require('../config/db');
 
-const Teacher = Joi.object({
-  id: Joi.number().required(),
-  nombres: Joi.string().required(),
-  apellidos: Joi.string().required(),
-  numeroEmpleado: Joi.number().required(),
-  horasClase: Joi.number().required(),
+const Teacher = sequelize.define('Teacher', {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  nombres: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  apellidos: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  numeroEmpleado: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  horasClase: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  }
 });
 
 module.exports = Teacher;

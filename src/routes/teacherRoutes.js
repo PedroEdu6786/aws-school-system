@@ -1,18 +1,21 @@
-const express = require("express");
+const express = require('express');
 
 const {
   getTeachers,
   createTeacher,
   getTeacherById,
   updateTeacher,
-  deleteTeacher,
-} = require("../controllers/teacherController");
+  deleteTeacher
+} = require('../controllers/teacherController');
 
 const router = express.Router();
 
-router.route("/").get(getTeachers).post(createTeacher);
 router
-  .route("/:id")
+  .route('/')
+  .get(getTeachers)
+  .post(createTeacher);
+router
+  .route('/:id')
   .get(getTeacherById)
   .put(updateTeacher)
   .delete(deleteTeacher);
