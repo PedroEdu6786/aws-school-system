@@ -29,9 +29,9 @@ const createStudent = async (req, res) => {
     return res.status(400).json({ message: 'Invalid student data', error });
   }
 
-  await Student.create(value);
+  const newStudent = await Student.create(value);
 
-  return res.status(201).json(value);
+  return res.status(201).json(newStudent);
 };
 
 const updateStudent = async (req, res) => {
@@ -43,9 +43,9 @@ const updateStudent = async (req, res) => {
     return res.status(400).json({ message: 'Invalid student data', error });
   }
 
-  await Student.update(value, { where: { id: req.params.id } });
+  const updatedStudent = await Student.update(value, { where: { id: req.params.id } });
 
-  return res.status(200).json(value);
+  return res.status(200).json(updatedStudent);
 };
 
 const deleteStudent = async (req, res) => {
