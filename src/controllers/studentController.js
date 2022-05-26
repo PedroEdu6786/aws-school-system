@@ -62,7 +62,9 @@ const deleteStudent = async (req, res) => {
 };
 
 const uploadProfilePicture = async (req, res) => {
-  if (!req.file || !req.file.mimetype.includes('image')) {
+  console.log(req.file);
+  if (!req.file) {
+    console.log(req.file);
     return res.status(404).json({ message: `Upload image not successful` });
   }
   const data = await s3.upload(`photos/${req.params.id}/${req.file.originalname}`, req.file.buffer);
